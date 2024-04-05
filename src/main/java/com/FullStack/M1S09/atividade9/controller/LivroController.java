@@ -3,6 +3,7 @@ package com.FullStack.M1S09.atividade9.controller;
 import com.FullStack.M1S09.atividade9.entities.LivroEntity;
 import com.FullStack.M1S09.atividade9.service.LivroService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,5 +25,8 @@ public class LivroController {
         return livroService.salvaLivro(livroEntity);
     }
 
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletarLivro(@PathVariable("id") Long id) {
+        return livroService.deletarLivro(id);
+    }
 }

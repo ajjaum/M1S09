@@ -5,6 +5,7 @@ import com.FullStack.M1S09.atividade9.entities.LivroEntity;
 import com.FullStack.M1S09.atividade9.service.BibliotecarioService;
 import com.FullStack.M1S09.atividade9.service.LivroService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,5 +25,10 @@ public class BibliotecarioController {
     @PostMapping
     public BibliotecarioEntity salvarBibliotecario(@RequestBody BibliotecarioEntity bibliotecarioEntity) {
         return bibliotecarioService.salvaBibliotecario(bibliotecarioEntity);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletarBibliotecario(@PathVariable("id") Long id) {
+        return bibliotecarioService.deletarBibliotecario(id);
     }
 }
