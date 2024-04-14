@@ -6,9 +6,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public interface LivroRepository extends JpaRepository<LivroEntity, Long> {
 
+    @Query(name = "Update LivroEntity l" +
+            " l.titulo = :titulo, " +
+            " l.anoPublicacao = :ano_publicacao" +
+            " where l.id = :id")
+    LivroEntity update(@Param("id") Long id,
+                       @Param("titulo") String titulo,
+                       @Param("ano_publicacao") Long anoPublicacao);
 }

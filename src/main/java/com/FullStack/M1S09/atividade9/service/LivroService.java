@@ -30,4 +30,15 @@ public class LivroService {
         livroRepository.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK).body("Livro " + id + " excluído da base de dados.");
     }
+
+    public LivroEntity atualizarLivro(LivroEntity livroEntity) throws Exception {
+
+        livroRepository.findById(livroEntity.getId()).orElseThrow();
+
+        return livroRepository.update(
+                livroEntity.getId(),
+                livroEntity.getTitulo(),
+                livroEntity.getAutor(),
+                livroEntity.getAnoPublicacao());
+    }
 }
